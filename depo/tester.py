@@ -1,4 +1,5 @@
 from parser import HtmlParser
+import re
 
 nbuparser = HtmlParser('https://bank.gov.ua/')
 nbuparser.NbuParse('div', 'index-page')
@@ -21,6 +22,6 @@ tempparser7.TempParse('td', 'p7')
 tempparser8 = HtmlParser('https://sinoptik.ua')
 tempparser8.TempParse('td', 'p8')
 
-ls = list[tempparser1.Result[2], tempparser2.Result[2], tempparser3.Result[2], tempparser4.Result[2], tempparser5.Result[2], tempparser6.Result[2], tempparser7.Result[2], tempparser8.Result[2]]
+ls = [tempparser1.Result[2], tempparser2.Result[2], tempparser3.Result[2], tempparser4.Result[2], tempparser5.Result[2], tempparser6.Result[2], tempparser7.Result[2], tempparser8.Result[2]]
 
 print(ls)
