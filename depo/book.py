@@ -15,6 +15,7 @@ try:
     root.title('Programme')
     root.geometry('800x500')
 
+
     choice = 2
 
 
@@ -27,7 +28,7 @@ try:
         choice = 2
         euro.configure(state='active')
         dollar.configure(state='normal')
-        file.write(f'[{datetime.time}] User changed the currency to Euro\n')
+        file.write(f'[{time}] Info - User changed the currency to Euro\n')
 
 
     def Dollar():
@@ -39,7 +40,7 @@ try:
         choice = 3
         dollar.configure(state='active')
         euro.configure(state='normal')
-        file.write(f'[{time}] User changed the currency to Dollars\n')
+        file.write(f'[{time}] Info - User changed the currency to Dollars\n')
 
 
     def Temperature():
@@ -53,7 +54,7 @@ try:
         input.grid_forget()
         euro.grid_forget()
         dollar.grid_forget()
-        file.write(f'[{time}] User changed the mode to temperature\n')
+        file.write(f'[{time}] Info - User changed the mode to temperature\n')
 
 
     def Money():
@@ -68,15 +69,15 @@ try:
         dollar.grid(column=7, row=7)
         if input.cget("state") == 'disabled':
             input.configure(state='normal')
-            file.write(f'[{time}] User changed the mode to exchange rate\n')
+            file.write(f'[{time}] Info - User changed the mode to exchange rate\n')
         else:
             value = float(input.get())
             if choice == 2:
                 l2.configure(text=f"{value / tester.nbuparser.Result[choice]} євро")
-                file.write(f'[{time}] User converted {value} UAH to Euro\n')
+                file.write(f'[{time}] Info - User converted {value} UAH to Euro, which resulted in {value / tester.nbuparser.Result[choice]} euros\n')
             if choice == 3:
                 l2.configure(text=f"{value / tester.nbuparser.Result[choice]} доллари")
-                file.write(f'[{time}] User converted {value} UAH to Dollars\n')
+                file.write(f'[{time}] Info - User converted {value} UAH to Dollars, which resulted in {value / tester.nbuparser.Result[choice]} dollars\n')
 
 
     c = tk.Label(width=20, height=2)
@@ -103,4 +104,4 @@ try:
 except Exception as ex:
     timedate = datetime.now()
     time = timedate.strftime('%H:%M:%S')
-    file.write(f'[{time}] {ex}\n')
+    file.write(f'[{time}] Error - {ex}\n')
